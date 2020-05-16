@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Profile;
+use App\Company;
 
 class User extends Authenticatable
 {
@@ -41,6 +42,11 @@ class User extends Authenticatable
     // One user has one profile 
     public function profile() {
         return $this->hasOne(Profile::class);
+    }
+
+    // One user has one company profile 
+    public function company() {
+        return $this->hasOne(Company::class);
     }
      
 }

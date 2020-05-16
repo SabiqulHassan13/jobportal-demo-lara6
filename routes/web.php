@@ -21,6 +21,10 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 // Company Routes
 Route::get('/companies/{id}/{company}', 'CompanyController@index')->name('company.index');
+Route::get('/companies/create', 'CompanyController@create')->name('company.create');
+Route::post('/companies/store', 'CompanyController@store')->name('company.store');
+Route::post('/companies/coverphoto', 'CompanyController@coverPhoto')->name('company.coverphoto');
+Route::post('/companies/logo', 'CompanyController@logo')->name('company.logo');
 
 // User Profile Routes
 Route::get('/users/profile', 'UserProfileController@index');
@@ -30,8 +34,8 @@ Route::post('/users/profile/resume', 'UserProfileController@resume')->name('prof
 Route::post('/users/profile/avatar', 'UserProfileController@avatar')->name('profile.avatar');
 
 // Employer Profile Routes
-Route::view('/employer/register', 'auth.emp-register');
-Route::view('/employer/profile/store', 'EmployerProfileController@store')->name('employer.store');
+Route::view('/employer/register', 'auth.emp-register')->name('employer.register');
+Route::post('/employer/profile/store', 'EmployerProfileController@store')->name('employer.store');
 
 
 
