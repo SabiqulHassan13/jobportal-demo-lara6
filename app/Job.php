@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
-    //
+    protected $guarded = [];
 
     public function getRouteKeyName()
     {
@@ -17,5 +17,7 @@ class Job extends Model
     public function company() {
         return $this->belongsTo('App\Company');
     }
+
+    // public function ()
 
 }

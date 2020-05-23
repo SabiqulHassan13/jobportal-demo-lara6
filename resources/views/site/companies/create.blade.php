@@ -112,6 +112,8 @@
                     <p><b>Company Name: </b>{{ Auth::user()->company->name }}</p>
                     <p><b>Company Email: </b>{{ Auth::user()->email }}</p>
                     <p><b>Company Phone: </b>{{ Auth::user()->company->phone }}</p>
+                    <p><b>Company Address: </b>{{ Auth::user()->company->address }}</p>
+                    <p><b>Company Page: </b> <a href="companies/{{ Auth::user()->company->slug }}">View</a></p>
                     <p><b>Company Website: </b>{{ Auth::user()->company->website }}</p>
                     <p><b>Company Slogan: </b>{{ Auth::user()->company->slogan }}</p>
                     <p><b>Company Description: </b>{{ Auth::user()->company->description }}</p>

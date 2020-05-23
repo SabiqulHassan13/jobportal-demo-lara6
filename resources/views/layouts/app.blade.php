@@ -56,17 +56,40 @@
                                 </li>
                             @endif
                         @else
+                            @if(Auth::user()->user_type == "employer")
+                                <li class="nav-item">
+                                    <a class="btn btn-success" href="{{ route('jobs.create') }}">{{ __('Post Job') }}</a>
+                                </li>
+
+                            @endif
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    @if(Auth::user()->user_type = 'employer')
+                                    <i class="fas fa-user">&nbsp;</i>
+                                    @if(Auth::user()->user_type == 'employer')
                                         {{ Auth::user()->company->name }} 
-                                    @else
+                                    @endif
+                                    @if(Auth::user()->user_type == 'seeker')
                                         {{ Auth::user()->name }} 
                                     @endif
                                     <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->user_type == 'employer')
+                                        <a class="dropdown-item" href="{{ route('company.create') }}">
+                                            {{ __('Company Profile') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('jobs.myjobs') }}">
+                                            {{ __('My Posted Jobs') }}
+                                        </a>
+                                    @endif
+                                    @if(Auth::user()->user_type == 'seeker')
+                                        <a class="dropdown-item" href="{{ route('profile.index') }}">
+                                            {{ __('Seeker Profile') }}
+                                        </a>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
